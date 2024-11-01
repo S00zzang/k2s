@@ -7,16 +7,16 @@ spec:
   selector:
     matchLabels:
       app: httpd
-    template:
-      metadata:
-        labls:
-          app: httpd
-      spec:
-        containers:
-        - name: httpd
-          image: httpd
-          ports: 
-          - containerPort: 80
+  template:
+    metadata:
+     labels:
+      app: httpd
+    spec:
+      containers:
+      - name: httpd
+        image: httpd  
+        ports: 
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -28,4 +28,5 @@ spec:
   ports:
   - protocol: TCP
     port: 80
-  
+    targetPort: 80
+  type: ClusterIP  
